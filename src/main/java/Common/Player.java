@@ -7,7 +7,7 @@ Date: 17-01-2023
 public class Player {
     String playerName;
     public String playerCountry;
-    String playerRole;
+    public String playerRole;
     String playerPrice;
 
     public Player(String name, String country, String role, String price) {

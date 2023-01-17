@@ -61,30 +61,51 @@ public class ValidateTeam {
 
     @Test
     public void verifyForeignPlayerCount() {
-        try
-        {
-            extentTest= extentReports.createTest("Verify foreign player count");
-            int countForeignPlayers=0;
-            for(int i=0;i<team.playerList.size();i++)
-            {
-                String countryName=team.playerList.get(i).playerCountry;
-                if(!countryName.equals("India"))
-                    countForeignPlayers++
+        try {
+            extentTest = extentReports.createTest("Verify foreign player count");
+            int countForeignPlayers = 0;
+            for (int i = 0; i < team.playerList.size(); i++) {
+                String countryName = team.playerList.get(i).playerCountry;
+                if (!countryName.equals("India"))
+                    countForeignPlayers++;
             }
-            extentTest.log(Status.INFO,"Total count of foreign players:"+countForeignPlayers);
-            try{
-                Assert.assertTrue(countForeignPlayers<=4);
+            extentTest.log(Status.INFO, "Total count of foreign players:" + countForeignPlayers);
+            try {
+                Assert.assertTrue(countForeignPlayers <= 4);
+                System.out.println("Test Case: Passed");
+                extentTest.pass("PASSED");
+            } catch (AssertionError e) {
+                System.out.println("Test Case:Failed\n" + "Actual count of foreign players:" + countForeignPlayers);
+                extentTest.fail("FAILED");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void verifyWicketKeeper() {
+        try {
+            extentTest = extentReports.createTest("Verify Wicket Keeper");
+            int wicketKeeperCount = 0;
+            for (int i = 0; i < team.playerList.size(); i++) {
+                String playerRole=team.playerList.get(i).playerRole;
+                if(playerRole.equals("Wicket-keeper"))
+                    wicketKeeperCount++;
+            }
+            extentTest.log(Status.INFO,"Total wicket-keeper count:"+wicketKeeperCount);
+            try
+            {
+                Assert.assertTrue(wicketKeeperCount>0);
                 System.out.println("Test Case: Passed");
                 extentTest.pass("PASSED");
             }
-            catch (Exception e)
+            catch (AssertionError e)
             {
-                System.out.println("Test Case:Failed\n"+"Actual count of foreign players:"+countForeignPlayers);
-                extentTest.fail("FAIELD");
+                System.out.println("Test Case:Failed\n"+"No wicket keeper found");
+                extentTest.fail("FAILED");
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
