@@ -1,5 +1,4 @@
-package Common;
-/*
+package Common;/*
 This is the class to maintain different properties of IPL team
 name: to store team name
 location: to store team location
@@ -8,12 +7,14 @@ Creator: Abhishek Paul
 Date: 17-01-2023
  */
 
+import Common.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class IPLTeam {
     String name, location;
-    List<Player> playerList;
+    public List<Player> playerList;
 
     public void addPlayer(String name, String coutry, String role, String price) {
         Player player = new Player(name, coutry, role, price);
