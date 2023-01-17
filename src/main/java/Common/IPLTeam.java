@@ -1,4 +1,4 @@
-
+package Common;
 /*
 This is the class to maintain different properties of IPL team
 name: to store team name

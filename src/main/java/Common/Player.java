@@ -1,4 +1,4 @@
-/*
+package Common;/*
 this is the class to maintain different properties of a player
 Creator: Abhishek Paul
 Date: 17-01-2023
